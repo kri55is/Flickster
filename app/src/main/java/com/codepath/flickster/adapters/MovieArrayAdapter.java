@@ -14,11 +14,19 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static com.codepath.flickster.R.id.tvTitle;
+
 /**
  * Created by emilie on 9/11/17.
  */
 
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
+
+    private static class ViewHolder{
+        ImageView posterPath;
+        TextView originalTitle;
+        TextView overview;
+    }
 
     public MovieArrayAdapter(Context context, List<Movie> movies){
         super(context, android.R.layout.simple_list_item_1, movies);
@@ -30,25 +38,28 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         //get the data item from the position
         Movie movie = getItem(position);
 
+        ViewHolder viewHolder;
+
         //check the view being used
         if (convertView == null){
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_movie, parent, false);
 
+            viewHolder = new ViewHolder();
+            viewHolder.posterPath = (ImageView) convertView.findViewById(R.id.ivMovieImage);
+            viewHolder.originalTitle = (TextView) convertView.findViewById(tvTitle);
+            viewHolder.overview = (TextView) convertView.findViewById(R.id.tvOverview);
+
+            convertView.setTag(viewHolder);
+        }
+        else{
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ImageView ivImage = (ImageView) convertView.findViewById(R.id.ivMovieImage);
-        //clear out the image
-        ivImage.setImageResource(0);
-
-        TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-        TextView tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
-
-        //populate data
-        tvTitle.setText(movie.getOriginalTitle());
-        tvOverview.setText(movie.getOverview());
-
-        Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
+        //populate information
+        Picasso.with(getContext()).load(movie.getPosterPath()).into(viewHolder.posterPath);
+        viewHolder.originalTitle.setText(movie.getOriginalTitle());
+        viewHolder.overview.setText(movie.getOverview());
 
         return convertView;
 
