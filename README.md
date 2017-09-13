@@ -1,6 +1,6 @@
-# Project 1 - *Name of App Here*
+# Project 1 - Flickster
 
-**Name of your app** shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
+Flickster shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
 
 Time spent: **X** hours spent in total
 
@@ -45,10 +45,10 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
-Small thing while trying to create a folder layout-land : I created it and didn't see it. I tries to create it again but got error that "layout-land already extists"-->
+* Small thing while trying to create a folder layout-land : I created it and didn't see it. I tries to create it again but got error that "layout-land already extists"-->
 It was existsing but you have different ways of looking at your projects file and I was in the "wrong" one.
 Found solution here: https://stackoverflow.com/questions/29458189/android-studio-layout-land-folder-not-appearing
-
+* After I used Final Android Resizer that imported images I couldn't reference them (R.drawable.imageName), they weren't recognized. I had to clean & rebuild fo fix it.
 
 ## Open-source libraries used
 
