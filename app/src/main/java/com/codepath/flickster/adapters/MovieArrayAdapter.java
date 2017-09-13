@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import static com.codepath.flickster.R.id.tvTitle;
 import static com.loopj.android.http.AsyncHttpClient.log;
 
 /**
@@ -49,7 +48,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
             viewHolder = new ViewHolder();
             viewHolder.posterPath = (ImageView) convertView.findViewById(R.id.ivMovieImage);
-            viewHolder.originalTitle = (TextView) convertView.findViewById(tvTitle);
+            viewHolder.originalTitle = (TextView) convertView.findViewById(R.id.tvTitle);
             viewHolder.overview = (TextView) convertView.findViewById(R.id.tvOverview);
 
             convertView.setTag(viewHolder);
@@ -66,8 +65,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
             log.d("debug", "landscape");
             imagePath = movie.getBackdropImage();
         }
-        Picasso.with(getContext()).load(imagePath).placeholder(R.drawable.waiting).into(viewHolder.posterPath);
-        //Picasso.with(getContext()).load(imagePath).placeholder(R.mipmap.ic_launcher).into(viewHolder.posterPath);
+        Picasso.with(getContext()).load(imagePath).placeholder(R.drawable.bananatransparent).into(viewHolder.posterPath);
 
         viewHolder.originalTitle.setText(movie.getOriginalTitle());
         viewHolder.overview.setText(movie.getOverview());
