@@ -59,17 +59,15 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         }
 
         //populate information
-        int orientation = getContext().getResources().getConfiguration().orientation;
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Picasso.with(getContext()).load(movie.getPosterPath()).into(viewHolder.posterPath);
-            log.d("debug", "portrait");
-            // ...
-        } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Picasso.with(getContext()).load(movie.getBackdropImage()).into(viewHolder.posterPath);
-            log.d("debug", "landscape");
+        String imagePath = movie.getPosterPath();;
 
-            // ...
+        int orientation = getContext().getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            log.d("debug", "landscape");
+            imagePath = movie.getBackdropImage();
         }
+        Picasso.with(getContext()).load(imagePath).placeholder(R.drawable.waiting).into(viewHolder.posterPath);
+        //Picasso.with(getContext()).load(imagePath).placeholder(R.mipmap.ic_launcher).into(viewHolder.posterPath);
 
         viewHolder.originalTitle.setText(movie.getOriginalTitle());
         viewHolder.overview.setText(movie.getOverview());
