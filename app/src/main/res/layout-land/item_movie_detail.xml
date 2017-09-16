@@ -11,7 +11,7 @@
         android:id="@+id/ivMovieImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_weight="0.50"
         tools:src="@mipmap/ic_launcher" />
 
     <TextView
@@ -28,9 +28,18 @@
         android:id="@+id/tvOverview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="0.3"
         android:paddingLeft="10dp"
         android:textAlignment="viewStart"
         android:textColor="@android:color/darker_gray"
         tools:text="Gru and his wife Lucy must stop former '80s child star Balthazar Bratt from achieving world domination." />
 
+    <RatingBar
+        android:id="@+id/rbRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="true"
+        android:numStars="5"
+        tools:rating="2"
+        android:theme="@style/RatingBar" />
 </LinearLayout>

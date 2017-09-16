@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.codepath.flickster.models.Movie;
@@ -23,7 +24,7 @@ public class DetailedMovieActivity extends AppCompatActivity {
     public ImageView poster;
     public TextView originalTitle;
     public TextView overview;
-    public ImageView backdropImage;
+    public RatingBar rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class DetailedMovieActivity extends AppCompatActivity {
         originalTitle = (TextView) findViewById(R.id.tvTitle);
         poster = (ImageView) findViewById(R.id.ivMovieImage);
         overview = (TextView) findViewById(R.id.tvOverview);
+        rating = (RatingBar) findViewById(R.id.rbRating);
 
         movieLibrary = MovieLibrary.getInstance();
         Intent intent = getIntent();
@@ -42,9 +44,10 @@ public class DetailedMovieActivity extends AppCompatActivity {
         if (movieLibrarySize > position) {
             Movie movie = movieLibrary.movies.get(position);
 
+            //populate information
             originalTitle.setText(movie.getOriginalTitle());
             overview.setText(movie.getOverview());
-            //populate information
+            rating.setRating(movie.getRating(5));
             String imagePath = movie.getPosterPath();;
 
             int orientation = getResources().getConfiguration().orientation;
