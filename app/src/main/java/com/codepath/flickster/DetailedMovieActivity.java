@@ -3,6 +3,7 @@ package com.codepath.flickster;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
@@ -31,6 +32,11 @@ public class DetailedMovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_movie_detail);
 
+        //Add icon to title bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.ic_launcher_round);
+        
         originalTitle = (TextView) findViewById(R.id.tvTitle);
         poster = (ImageView) findViewById(R.id.ivMovieImage);
         overview = (TextView) findViewById(R.id.tvOverview);
