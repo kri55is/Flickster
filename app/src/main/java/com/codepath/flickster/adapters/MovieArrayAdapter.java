@@ -15,6 +15,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.loopj.android.http.AsyncHttpClient.log;
 
 /**
@@ -23,10 +26,14 @@ import static com.loopj.android.http.AsyncHttpClient.log;
 
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
-    private static class ViewHolder{
-        ImageView posterPath;
-        TextView originalTitle;
-        TextView overview;
+    static class ViewHolder{
+        @BindView(R.id.ivMovieImage) ImageView posterPath;
+        @BindView(R.id.tvTitle) TextView originalTitle;
+        @BindView(R.id.tvOverview) TextView overview;
+
+        public ViewHolder(View view){
+            ButterKnife.bind(this, view);
+        }
     }
 
     public MovieArrayAdapter(Context context, List<Movie> movies){
@@ -46,7 +53,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_movie, parent, false);
 
-            viewHolder = new ViewHolder();
+            viewHolder = new ViewHolder(convertView);
             viewHolder.posterPath = (ImageView) convertView.findViewById(R.id.ivMovieImage);
             viewHolder.originalTitle = (TextView) convertView.findViewById(R.id.tvTitle);
             viewHolder.overview = (TextView) convertView.findViewById(R.id.tvOverview);

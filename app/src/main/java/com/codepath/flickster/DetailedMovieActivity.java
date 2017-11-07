@@ -14,6 +14,9 @@ import com.codepath.flickster.models.Movie;
 import com.codepath.flickster.models.MovieLibrary;
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.loopj.android.http.AsyncHttpClient.log;
 
 public class DetailedMovieActivity extends AppCompatActivity {
@@ -22,10 +25,10 @@ public class DetailedMovieActivity extends AppCompatActivity {
 
     public MovieLibrary movieLibrary;
 
-    public ImageView poster;
-    public TextView originalTitle;
-    public TextView overview;
-    public RatingBar rating;
+    @BindView(R.id.ivMovieImage) public ImageView poster;
+    @BindView(R.id.tvTitle) public TextView originalTitle;
+    @BindView(R.id.tvOverview) public TextView overview;
+    @BindView(R.id.rbRating) public RatingBar rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +39,11 @@ public class DetailedMovieActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.ic_launcher_round);
-        
-        originalTitle = (TextView) findViewById(R.id.tvTitle);
-        poster = (ImageView) findViewById(R.id.ivMovieImage);
-        overview = (TextView) findViewById(R.id.tvOverview);
-        rating = (RatingBar) findViewById(R.id.rbRating);
+        ButterKnife.bind(this);
+//        originalTitle = (TextView) findViewById(R.id.tvTitle);
+//        poster = (ImageView) findViewById(R.id.ivMovieImage);
+//        overview = (TextView) findViewById(R.id.tvOverview);
+//        rating = (RatingBar) findViewById(R.id.rbRating);
 
         movieLibrary = MovieLibrary.getInstance();
         Intent intent = getIntent();
