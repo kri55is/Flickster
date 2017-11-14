@@ -56,13 +56,15 @@ public class DetailedMovieActivity extends AppCompatActivity {
             //populate information
             originalTitle.setText(movie.getOriginalTitle());
             overview.setText(movie.getOverview());
-            rating.setRating(movie.getRating(5));
-            String imagePath = movie.getPosterPath();;
+            double d = movie.getVoteAverage(5);
+            float averageRating = (float) d;
+            rating.setRating(averageRating);
+            String imagePath = movie.getPosterPath();
 
             int orientation = getResources().getConfiguration().orientation;
             if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 log.d("debug", "landscape");
-                imagePath = movie.getBackdropImage();
+                imagePath = movie.getBackdropPath();
             }
             Picasso.with(this).load(imagePath).placeholder(R.drawable.bananatransparent).into(poster);
         }

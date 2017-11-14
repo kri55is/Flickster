@@ -65,12 +65,12 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         }
 
         //populate information
-        String imagePath = movie.getPosterPath();;
+        String imagePath = movie.getPosterPath();
 
         int orientation = getContext().getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             log.d("debug", "landscape");
-            imagePath = movie.getBackdropImage();
+            imagePath = movie.getBackdropPath();
         }
         Picasso.with(getContext()).load(imagePath).placeholder(R.drawable.bananatransparent).into(viewHolder.posterPath);
 

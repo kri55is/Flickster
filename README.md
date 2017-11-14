@@ -55,7 +55,8 @@ Found solution here: https://stackoverflow.com/questions/29458189/android-studio
 
 ## Open-source libraries used
 
-- [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
+- [OkHttp](https://github.com/square/okhttp) - Asynchronous HTTP requests 
+- [Retrofit](https://github.com/square/retrofit) - REST Client for Android
 - [Picasso](http://square.github.io/picasso/) - Image loading and caching library for Android
 - [Butterknife](https://github.com/JakeWharton/butterknife) - Java annotations
 
